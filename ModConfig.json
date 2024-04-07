@@ -1,0 +1,35 @@
+{
+  "ModId": "spelunky.script.archipelago",
+  "ModName": "Archipelago",
+  "ModAuthor": "Jordan",
+  "ModVersion": "0.1.0",
+  "ModDescription": "EXTREMELY HEAVY WIP",
+  "ModDll": "spelunky.script.archipelago.dll",
+  "ModIcon": "Preview.png",
+  "ModR2RManagedDll32": "x86/spelunky.script.archipelago.dll",
+  "ModR2RManagedDll64": "x64/spelunky.script.archipelago.dll",
+  "ModNativeDll32": "",
+  "ModNativeDll64": "",
+  "Tags": [],
+  "CanUnload": false,
+  "HasExports": false,
+  "IsLibrary": false,
+  "ReleaseMetadataFileName": "spelunky.script.archipelago.ReleaseMetadata.json",
+  "PluginData": {
+    "GitHubRelease": {
+      "UserName": "Colon-D",
+      "RepositoryName": "spelunky-script-archipelago",
+      "UseReleaseTag": true,
+      "AssetFileName": "Mod.zip"
+    }
+  },
+  "IsUniversalMod": false,
+  "ModDependencies": [
+    "reloaded.sharedlib.hooks"
+  ],
+  "OptionalDependencies": [],
+  "SupportedAppId": [
+    "spelunky.exe"
+  ],
+  "ProjectUrl": ""
+}
