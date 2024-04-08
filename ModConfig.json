@@ -2,7 +2,7 @@
   "ModId": "spelunky.script.archipelago",
   "ModName": "Archipelago",
   "ModAuthor": "Jordan",
-  "ModVersion": "0.1.0",
+  "ModVersion": "0.1.1",
   "ModDescription": "EXTREMELY HEAVY WIP",
   "ModDll": "spelunky.script.archipelago.dll",
   "ModIcon": "Preview.png",
