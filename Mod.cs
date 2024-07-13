@@ -96,7 +96,7 @@ public class Mod : ModBase // <= Do not Remove.
 	Pinnable<byte> _saveName    = new Pinnable<byte>(new byte[_saveNameMaxLen]);
 	Pinnable<byte> _saveNameTmp = new Pinnable<byte>(new byte[_saveNameMaxLen]);
 	Pinnable<byte> _saveNameBak = new Pinnable<byte>(new byte[_saveNameMaxLen]);
-	const int _testStringMaxLen = 256;
+	const int _testStringMaxLen = 256 * 10;
 	Pinnable<char> _testString = new Pinnable<char>(new char[_testStringMaxLen]);
 	Queue<ArchipelagoMessage> _stringQueue = new Queue<ArchipelagoMessage>(10);
 
@@ -184,6 +184,7 @@ public class Mod : ModBase // <= Do not Remove.
 
 		deathLinkService.EnableDeathLink();
 		deathLinkService.OnDeathLinkReceived += (deathLinkObject) => {
+			// todo: queue death until _global->screenState == ScreenState.normal_gameplay
 			var desc =
 				"A deadly curse from beyond this world was cast upon me.\n("
 				+ (deathLinkObject.Cause == null ? deathLinkObject.Source : deathLinkObject.Cause) + ")";
@@ -194,6 +195,7 @@ public class Mod : ModBase // <= Do not Remove.
 			EntityTypesEnabled.disabled.Remove((EntityType)item.Item);
 		}
 		session.Items.ItemReceived += (receivedItemsHelper) => {
+			// todo: issue when more than one item is unlocked?
 			var item = receivedItemsHelper.DequeueItem();
 			EntityTypesEnabled.disabled.Remove((EntityType)item.Item);
 		};
@@ -570,7 +572,7 @@ public class Mod : ModBase // <= Do not Remove.
 		// update archipelago messages
 		var archipelago_messages_string = "";
 		foreach (var message in _stringQueue) {
-			if (_frame > message.timestamp + 150) {
+			if (_frame > message.timestamp + 300 && _global->screenState != ScreenState.paused) {
 				archipelago_messages_string += $"*";
 			} else {
 				archipelago_messages_string += $"{message.value}*";

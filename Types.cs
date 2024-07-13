@@ -1,10 +1,40 @@
 ﻿using Archipelago.MultiClient.Net;
+using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
 
 // SpecsHD and the Cheat Engine table were both used for addresses/structures/enums etc
 
 namespace spelunky.scripts.archipelago.structs;
+
+// stolen from Kirby703: https://discord.com/channels/150366712775180288/489525743634743296/654168094008279040
+public enum ScreenState {
+	playing_normal = 0,
+	level_load = 1,
+	level_enter = 2,
+	level_exit = 3,
+	paused = 4,
+	splash = 5,
+	leaderboards = 7,
+	options = 8,
+	level_transition = 11,
+	intro_cutscene = 14,
+	main_menu = 15,
+	character_select = 17,
+	victory_cutscene_part1 = 18,
+	victory_cutscene_part2 = 19,
+	victory_results = 20,
+	player_stats = 21,
+	lobby = 22,
+	playing_deathmatch = 23,
+	deathmatch_pick_level = 25,
+	tutorial = 26,
+	deathmatch_rules = 27,
+	deathmatch_player_standings = 28,
+	journal = 29,
+	game_over = 30,
+	victory_credits = 31
+};
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct GlobalState {
@@ -30,6 +60,8 @@ public unsafe struct GlobalState {
 		_struct_4C->help_and_options_menu_string = _originalHelpAndOptionsMenuString;
 	}
 
+	[FieldOffset(0x58)]
+	public ScreenState screenState;
 
 
 	[FieldOffset(0x440606)]
